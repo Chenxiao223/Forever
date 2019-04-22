@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_system"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:scaleType="fitXY"
+        android:src="@color/titlecolor" />
+    、
+
+    <com.chenxiao.forever.view.NoScrollViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.chaychan.library.BottomBarLayout
+        android:id="@+id/bbl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fbfdfc"
+        android:orientation="horizontal">
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="25dp"
+            app:iconNormal="@mipmap/image_black"
+            app:iconSelected="@mipmap/image_blue"
+            app:iconWidth="25dp"
+            app:itemMarginTop="1dp"
+            app:itemText="@string/btn_message"
+            app:itemTextSize="@dimen/text_sp_10"
+            app:textColorNormal="@color/black"
+            app:textColorSelected="@color/titlecolor" />
+
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="25dp"
+            app:iconNormal="@mipmap/address_list_black"
+            app:iconSelected="@mipmap/address_list_blue"
+            app:iconWidth="25dp"
+            app:itemMarginTop="1dp"
+            app:itemText="@string/address_list"
+            app:itemTextSize="@dimen/text_sp_10"
+            app:textColorNormal="@color/black"
+            app:textColorSelected="@color/titlecolor" />
+
+        <com.chaychan.library.BottomBarItem
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="25dp"
+            app:iconNormal="@mipmap/my_black"
+            app:iconSelected="@mipmap/my_blue"
+            app:iconWidth="25dp"
+            app:itemMarginTop="1dp"
+            app:itemText="@string/my"
+            app:itemTextSize="@dimen/text_sp_10"
+            app:textColorNormal="@color/black"
+            app:textColorSelected="@color/titlecolor" />
+
+    </com.chaychan.library.BottomBarLayout>
+
+</LinearLayout>
