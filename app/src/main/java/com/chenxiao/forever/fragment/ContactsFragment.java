@@ -7,12 +7,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.chenxiao.forever.Activity.ChatActivity;
 import com.chenxiao.forever.Util.ClickUtils;
 import com.chenxiao.forever.adapter.ContactsAdapter;
 import com.chenxiao.forever.bean.User;
@@ -109,7 +111,10 @@ public class ContactsFragment extends Fragment {
         list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                //跳转到聊天界面
+                Intent intent = new Intent(getContext(), ChatActivity.class);
+                intent.putExtra("user_name", list.get(position).getName());
+                startActivity(intent);
             }
         });
 
@@ -118,20 +123,24 @@ public class ContactsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SCAN_CODE ) {
-            Bundle bundle = data.getExtras();
-            //返回二维码扫描的信息
-            final String result = bundle.get("result").toString();
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        EMClient.getInstance().contactManager().addContact(result, "");
-                    } catch (HyphenateException e) {
-                        e.printStackTrace();
+        try {
+            if (requestCode == SCAN_CODE) {
+                Bundle bundle = data.getExtras();
+                //返回二维码扫描的信息
+                final String result = bundle.get("result").toString();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            EMClient.getInstance().contactManager().addContact(result, "");
+                        } catch (HyphenateException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-            }).start();
+                }).start();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
