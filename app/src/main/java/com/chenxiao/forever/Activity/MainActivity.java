@@ -7,15 +7,20 @@ import android.widget.LinearLayout;
 
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
+import com.chenxiao.forever.Util.TipHelper;
 import com.chenxiao.forever.Util.ToastUtils;
+import com.chenxiao.forever.adapter.EMMessageListenerAdapter;
 import com.chenxiao.forever.adapter.MainAdapter;
 import com.chenxiao.forever.forever.R;
+import com.chenxiao.forever.utils.ThreadUtils;
 import com.chenxiao.forever.view.NoScrollViewPager;
 import com.hyphenate.EMConnectionListener;
-import com.hyphenate.EMContactListener;
 import com.hyphenate.EMError;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
 import com.hyphenate.util.NetUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -49,6 +54,8 @@ public class MainActivity extends BaseActivity {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) iv_system.getLayoutParams();
         params.height = (int) getStatusBarHeight(this);//设置当前控件布局的高度
 
+        EMClient.getInstance().chatManager().addMessageListener(mEMMessageListenerAdapter);
+
         pager = findViewById(R.id.viewpager);
         pager.setOffscreenPageLimit(3);//
         homePageAdapter = new MainAdapter(getSupportFragmentManager());
@@ -70,6 +77,29 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private EMMessageListenerAdapter mEMMessageListenerAdapter = new EMMessageListenerAdapter() {
+
+        //该回调在子线程中调用
+        @Override
+        public void onMessageReceived(List<EMMessage> list) {
+            updateUnreadCount();
+        }
+    };
+
+    private void updateUnreadCount() {
+        ThreadUtils.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int count = EMClient.getInstance().chatManager().getUnreadMsgsCount();
+                mBottomBarLayout.setUnread(0, count);
+                if (count != 0) {
+                    TipHelper.Vibrate(mContext, new long[]{800, 500}, false);//振动
+                }
+
+            }
+        });
     }
 
     //实现ConnectionListener接口
@@ -104,6 +134,12 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUnreadCount();
+    }
+
     //对返回键进行监听
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -121,5 +157,11 @@ public class MainActivity extends BaseActivity {
         } else {
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EMClient.getInstance().chatManager().removeMessageListener(mEMMessageListenerAdapter);
     }
 }

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <!--自定义dialog背景全透明无边框theme -->
@@ -21,5 +23,13 @@
         <!--是否模糊-->
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+    <style name="SplashTheme" parent="AppTheme"> <!-- <item aname="android:windowBackground"></item>-->
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:background">@mipmap/starbg</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 
 </resources>

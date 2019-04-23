@@ -58,7 +58,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.chenxiao.forever.Activity.StartActivity">
+        <activity android:name="com.chenxiao.forever.Activity.StartActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
