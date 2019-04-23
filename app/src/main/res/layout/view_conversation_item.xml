@@ -17,7 +17,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/head" />
 
         <TextView
             android:id="@+id/user_name"

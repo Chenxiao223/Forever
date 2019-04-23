@@ -1,6 +1,8 @@
 package com.chenxiao.forever.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,12 +28,21 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.tv_regist)
     TextView tv_regist;
     private PromptDialog promptDialog;
+    private SharedPreferences.Editor editors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_login);
         super.onCreate(savedInstanceState);
 
+        initView();
+    }
+
+    private void initView() {
+        SharedPreferences sharedPreferences = getSharedPreferences("logininfo", Context.MODE_PRIVATE);
+        editors = sharedPreferences.edit();
+        et_username.setText(getUserName());
+        et_user_pwd.setText(getpassword());
     }
 
 
@@ -70,6 +81,10 @@ public class LoginActivity extends BaseActivity {
         final String userName = et_username.getText().toString().trim();
         final String password = et_user_pwd.getText().toString().trim();
         if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)) {
+            editors.putString("username", userName);
+            editors.putString("userpwd", password);
+            editors.commit();//提交
+
             promptDialog = new PromptDialog(mContext);
             promptDialog.showLoading(getResources().getString(R.string.Is_landing));
             EMClient.getInstance().login(userName, password, new EMCallBack() {//回调
@@ -107,6 +122,16 @@ public class LoginActivity extends BaseActivity {
         } else {
             ToastUtils.showShort(mContext, R.string.activity_login_text);
         }
+    }
+
+    public String getUserName() {
+        SharedPreferences shared = getSharedPreferences("logininfo", Context.MODE_PRIVATE);
+        return shared.getString("username", "");
+    }
+
+    public String getpassword() {
+        SharedPreferences shared = getSharedPreferences("logininfo", Context.MODE_PRIVATE);
+        return shared.getString("userpwd", "");
     }
 
 }

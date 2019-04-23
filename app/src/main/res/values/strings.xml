@@ -430,7 +430,7 @@
     <string name="check_result_get_token_fail">Token获取失败%1$s%2$s</string>
     <string name="check_result_login_fail">登录失败%1$s%2$s</string>
     <string name="check_result_msg_send_fail">消息发送失败%1$s%2$s</string>
-    <string name="check_result_logout_fail">退出登录失败%1$s%2$s</string>
+    <string name="check_result_logout_fail">退出登录失败</string>
     <string name="check_result_get_dns_list_success">DNS列表获取成功</string>
     <string name="check_result_get_token_success">Token获取成功</string>
     <string name="check_result_login_success">登录成功</string>
@@ -478,4 +478,6 @@
     <string name="send">发送</string>
     <string name="chat_with">与%s聊天中</string>
     <string name="send_failed">发送失败</string>
+    <string name="set_head">设置头像</string>
+    <string name="please_later">请稍后</string>
 </resources>

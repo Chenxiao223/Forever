@@ -20,11 +20,11 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_margin="8dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/head" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,9 +37,9 @@
                 android:id="@+id/receive_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autoLink="web"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:autoLink="web"
                 android:paddingLeft="15dp"
                 android:paddingTop="10dp"
                 android:paddingRight="5dp"

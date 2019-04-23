@@ -1,6 +1,7 @@
 package com.chenxiao.forever.view;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.chenxiao.forever.Activity.MainActivity;
 import com.chenxiao.forever.forever.R;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessageBody;
@@ -18,6 +21,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SendMessageItemView extends RelativeLayout {
 
@@ -27,6 +31,8 @@ public class SendMessageItemView extends RelativeLayout {
     ImageView mSendMessageProgress;
     @BindView(R.id.timestamp)
     TextView mTimestamp;
+    @BindView(R.id.avatar)
+    CircleImageView avatar;
 
     public SendMessageItemView(Context context) {
         this(context, null);
@@ -40,6 +46,12 @@ public class SendMessageItemView extends RelativeLayout {
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.view_send_message_item, this);
         ButterKnife.bind(this, this);
+        Glide.with(getContext()).load(getHeadPath()).thumbnail(0.5f).into(avatar);
+    }
+
+    public String getHeadPath() {
+        SharedPreferences shared = MainActivity.activity.getSharedPreferences("logininfo", Context.MODE_PRIVATE);
+        return shared.getString("headpath", "");
     }
 
     public void bindView(EMMessage emMessage, boolean showTimestamp) {

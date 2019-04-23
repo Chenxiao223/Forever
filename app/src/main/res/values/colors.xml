@@ -7,4 +7,8 @@
     <color name="titlecolor">#3BABEB</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#2c2c2c</color>
+
+    <color name="text">#747474</color>
+    <color name="text2">#9399ae</color>
+    <color name="text3">#a0a3af</color>
 </resources>

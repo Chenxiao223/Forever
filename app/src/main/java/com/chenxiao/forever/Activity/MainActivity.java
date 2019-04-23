@@ -20,6 +20,7 @@ import com.hyphenate.util.NetUtils;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
+    public static MainActivity activity;
     @BindView(R.id.bbl)
     BottomBarLayout mBottomBarLayout;
     @BindView(R.id.iv_system)
@@ -35,6 +36,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
 
+        activity = this;
         //注册一个监听连接状态的listener
         EMClient.getInstance().addConnectionListener(new MyConnectionListener());
         initView();
@@ -60,9 +62,9 @@ public class MainActivity extends BaseActivity {
             public void onItemSelected(BottomBarItem bottomBarItem, int previousPosition, int currentPosition) {
                 if (currentPosition == 0) {
                     pager.setCurrentItem(0);
-                }else if (currentPosition ==1){
+                } else if (currentPosition == 1) {
                     pager.setCurrentItem(1);
-                }else{
+                } else {
                     pager.setCurrentItem(2);
                 }
             }
