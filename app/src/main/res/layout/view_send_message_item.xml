@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -24,49 +25,32 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_margin="8dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/head" />
 
-        <RelativeLayout
-            android:id="@+id/ly_msg"
+        <com.github.library.bubbleview.BubbleTextView
+            android:id="@+id/send_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_10"
             android:layout_toLeftOf="@+id/avatar"
-            android:background="@drawable/style_chat_right">
-
-            <TextView
-                android:id="@+id/send_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical"
-                android:autoLink="web"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="5dp"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:id="@+id/chatto_img"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="5dp"
-                android:scaleType="fitCenter"
-                android:visibility="gone" />
-        </RelativeLayout>
+            android:padding="10dp"
+            android:text="Hello BubbleTextVew"
+            android:textColor="@android:color/black"
+            app:angle="8dp"
+            app:arrowCenter="true"
+            app:arrowHeight="10dp"
+            app:arrowLocation="right"
+            app:arrowPosition="14dp"
+            app:arrowWidth="8dp"
+            app:bubbleColor="@color/white" />
 
         <ImageView
             android:id="@+id/send_message_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/ly_msg"
+            android:layout_marginRight="@dimen/padding_dp_10"
+            android:layout_toLeftOf="@+id/send_message"
             android:src="@drawable/send_message_progress" />
     </RelativeLayout>
 

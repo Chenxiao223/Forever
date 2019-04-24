@@ -46,6 +46,7 @@ public class ForeverApp extends Application {
         EMClient.getInstance().init(applicationContext, options);
         //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
         EMClient.getInstance().setDebugMode(true);
+        EMClient.getInstance().chatManager().addMessageListener(mEMMessageListenerAdapter);
 
     }
 

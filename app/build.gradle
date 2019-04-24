@@ -77,4 +77,6 @@ dependencies {
     implementation 'top.zibin:Luban:1.1.7'
     //基础工具库
     implementation 'com.github.vondear.RxTool:RxKit:v2.0.4'
+    //聊天对话框
+    implementation 'com.github.lguipeng:BubbleView:1.0.1'
 }

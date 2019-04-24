@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.chenxiao.forever.Activity.MainActivity;
 import com.chenxiao.forever.forever.R;
+import com.github.library.bubbleview.BubbleTextView;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessageBody;
 import com.hyphenate.chat.EMTextMessageBody;
@@ -27,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SendMessageItemView extends RelativeLayout {
 
     @BindView(R.id.send_message)
-    TextView mSendMessage;
+    BubbleTextView mSendMessage;
     @BindView(R.id.send_message_progress)
     ImageView mSendMessageProgress;
     @BindView(R.id.timestamp)

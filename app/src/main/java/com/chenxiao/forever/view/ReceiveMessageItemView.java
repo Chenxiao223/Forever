@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chenxiao.forever.forever.R;
+import com.github.library.bubbleview.BubbleTextView;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessageBody;
 import com.hyphenate.chat.EMTextMessageBody;
@@ -22,7 +23,7 @@ public class ReceiveMessageItemView extends RelativeLayout {
     @BindView(R.id.timestamp)
     TextView mTimestamp;
     @BindView(R.id.receive_message)
-    TextView mReceiveMessage;
+    BubbleTextView mReceiveMessage;
 
     public ReceiveMessageItemView(Context context) {
         this(context, null);
