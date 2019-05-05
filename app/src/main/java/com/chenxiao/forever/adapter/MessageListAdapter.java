@@ -13,9 +13,7 @@ import java.util.List;
 
 public class MessageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final String TAG = "MessageListAdapter";
-
     private Context mContext;
-
     private List<EMMessage> mMessages;
 
     private static final int ITEM_TYPE_SEND_MESSAGE = 0;
